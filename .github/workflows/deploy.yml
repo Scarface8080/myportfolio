@@ -44,6 +44,12 @@ jobs:
           name: production-files
           path: ./dist
 
+      - name: Set MIME type for JSX files
+      run: |
+        find ./dist -name '*.jsx' -exec bash -c 'echo "Content-Type: text/javascript" >> "{}"' \;
+
+          
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
